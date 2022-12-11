@@ -38,14 +38,14 @@ class CalculateViewController: UIViewController {
         let weight = weightSlider.value
         let height = heightSlider.value
         calculatorBrain.calculateBmi(weight: weight, height: height)
-        bmiModel = calculatorBrain.getBmi()
+//        bmiModel = calculatorBrain.getBmi()
         self.performSegue(withIdentifier: "goToResult", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToResult" {
             let destinationVS = segue.destination as! ResultViewController
-            destinationVS.bmiModel = bmiModel
+            destinationVS.bmiModel = calculatorBrain.getBmi()
         }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
